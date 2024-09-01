@@ -1,35 +1,42 @@
-# 🌤️ Catch_Groom Project
+# Catch-Groom First-Django-Project
+캐치구름 조의 첫번째 Django 와 Docker 를 활용한 프로젝트입니다
 
-Welcome to the **Catch_Groom** team repository! This project documents our weekly progress as we work together on class. Below, you'll find a summary of what we've accomplished so far.
+## 필수 패키지
 
----
+이 프로젝트는 특정 Python 패키지에 의존합니다. 패키지 의존성을 관리하기 위해 `requirements.txt` 파일을 사용하고 있습니다.
 
+## 가상 환경 설정
 
-## 🗓️ Weekly Progress
+프로젝트의 패키지와 의존성을 독립적으로 관리하기 위해 가상 환경을 사용하는 것이 좋습니다. 가상 환경을 생성하고 활성화하는 방법은 다음과 같습니다:
 
-### 🌥️ Week 1
+### 가상 환경 생성 및 활성화
 
-**🐳 Docker Compose Setup & GitHub Deployment**
+1. **가상 환경 생성:**
 
-1. **Setup Project Directory**:
-   - Created a working directory and added `app.py` and `requirements.txt`.
+   ```bash
+   python -m venv venv
+   ```
 
-2. **Dockerize App**:
-   - Created a `Dockerfile` to containerize the basic app.
-   - Installed dependencies and set up the application environment.
+2. **가상 환경 활성화:**
 
-3. **Configure Docker Compose**:
-   - Created `docker-compose.yml` to manage the container.
-   - Mapped ports and set up environment variables.
+   - **Windows:**
 
-4. **Deploy & Test**:
-   - Ran the Docker Compose setup.
-   - Verified the service at `http://localhost:8080`.
+     ```bash
+     .\venv\Scripts\Activate
+     ```
 
-For more details on hosting, see our [guide](https://www.notion.so/github-repository-5f7207012d684d13bd6d939f611a149e?pvs=21).
+   - **macOS/Linux:**
 
----
+     ```bash
+     source venv/bin/activate
+     ```
 
-## 💻 Team
+## 패키지 설치
 
-Catch_Groom Team - Collaborating to build something awesome!
+가상 환경을 활성화한 후, `requirements.txt` 파일을 사용하여 필요한 패키지를 설치할 수 있습니다. 다음 명령어를 사용하여 패키지를 설치합니다:
+
+```bash
+pip install -r requirements.txt
+```
+
+test
