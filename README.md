@@ -1,4 +1,4 @@
-# Catch-Groom First-Django-Project
+# First-Django-Project
 캐치구름 조의 첫번째 Django 와 Docker 를 활용한 프로젝트입니다
 
 ## 필수 패키지
