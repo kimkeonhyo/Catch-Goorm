@@ -2,15 +2,38 @@
 <html>
 <head>
     <title>Sign Up</title>
+    <script>
+        function validateForm() {
+            const firstName = document.forms["signupForm"]["first_name"].value;
+            const password = document.forms["signupForm"]["password"].value;
+
+            const nameRegex = /^[a-zA-Z가-힣]+$/;    // 이름은 한글 또는 영어로만 이루어져야 함
+            const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;  // 비밀번호는 영문과 숫자 포함, 8자리 이상
+
+
+            if (!nameRegex.test(firstName)) {
+                alert("이름은 한글 또는 영어로만 입력할 수 있습니다.");
+                return false;
+            }
+
+            if (!passwordRegex.test(password)) {
+                alert("비밀번호는 8자리 이상이며, 영문자와 숫자를 모두 포함해야 합니다.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
 </head>
 <body>
     <h2>Sign Up</h2>
-    <form method="post">
+    <form name="signupForm" method="post" onsubmit="return validateForm()">
         {% csrf_token %}
-        <label for=""username"">User ID:</label>
+        <label for="username">User ID:</label>
         <input type="text" name="username" required><br><br>
 
-        <label for=""first_name"">Name:</label>
+        <label for="first_name">Name:</label>
         <input type="text" name="first_name" required><br><br>
 
         <label for="password">Password:</label>
@@ -20,5 +43,4 @@
     </form>
 
     <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
-</body>
-</html>
+</body></html>
