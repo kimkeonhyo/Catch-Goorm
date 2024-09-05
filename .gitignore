@@ -13,4 +13,5 @@ static/
 
 # Database initialization scripts (if containing sensitive info)
 init.sql
+*.env
 

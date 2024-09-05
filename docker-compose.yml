@@ -12,6 +12,7 @@ services:
       bash -c "./wait-for-it.sh db:3306 -- python3 manage.py makemigrations && python3 manage.py migrate &&gunicorn --bind 0.0.0.0:8000 User_service.wsgi:application "
     depends_on:
       - db
+
   db:
     image: mysql:8.0
     restart: always
