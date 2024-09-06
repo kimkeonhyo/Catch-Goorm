@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://220.69.203.87:8080',  # 요청의 출처를 여기에 추가
+    'http://220.69.203.87:8080', 'http://localhost:8080' # 요청의 출처를 여기에 추가
 ]
 
 # Application definition
