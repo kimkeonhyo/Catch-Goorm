@@ -1,20 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
     <h2>Welcome, {{ user.username }}</h2>
 
-    <p>User ID: {{ user.username }}</p>
-    <p>Name: {{ user.first_name }}</p>
+    <div class="profile-container">
+        {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="Profile image of {{ user.username }}" class="profile-image">
+        {% endif %}
+    </div>
 
-    <a href="{% url 'update' %}">Update Your Information</a><br>
-    <a href="{% url 'delete' %}">Delete Your Account</a><br>
+    <div class="user-info">
+        <p><strong>User ID:</strong> {{ user.username }}</p>
+        <p><strong>Name:</strong> {{ user.first_name }}</p>
+    </div>
 
-    <form method="post" action="{% url 'logout' %}">
+    <div class="actions">
+        <a href="{% url 'update' %}" class="btn btn-update">Update Your Information</a>
+        <a href="{% url 'delete' %}" class="btn btn-delete">Delete Your Account</a>
+    </div>
+
+    <form method="post" action="{% url 'logout' %}" class="logout-form">
         {% csrf_token %}
-        <button type="submit">Logout</button>
+        <button type="submit" class="btn btn-logout">Logout</button>
     </form>
-</body>
-</html>
+{% endblock %}

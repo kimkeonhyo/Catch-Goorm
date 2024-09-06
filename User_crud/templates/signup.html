@@ -1,15 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sign Up</title>
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+    <h2>Sign Up</h2>
+
+    <form name="signupForm" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        {% csrf_token %}
+        
+        <label for="username">User ID:</label>
+        <input type="text" name="username" class="input-field" required>
+
+        <label for="first_name">Name:</label>
+        <input type="text" name="first_name" class="input-field" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="input-field" required>
+
+        <!-- 프로필 이미지 업로드 필드 추가 -->
+        <label for="profile_image">Profile Image:</label>
+        <input type="file" name="profile_image" class="input-field" accept="image/*">
+
+        <button type="submit" class="btn">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+
     <script>
         function validateForm() {
             const firstName = document.forms["signupForm"]["first_name"].value;
             const password = document.forms["signupForm"]["password"].value;
 
-            const nameRegex = /^[a-zA-Z가-힣]+$/;    // 이름은 한글 또는 영어로만 이루어져야 함
-            const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;  // 비밀번호는 영문과 숫자 포함, 8자리 이상
-
+            const nameRegex = /^[a-zA-Z가-힣]+$/;
+            const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
 
             if (!nameRegex.test(firstName)) {
                 alert("이름은 한글 또는 영어로만 입력할 수 있습니다.");
@@ -24,23 +47,12 @@
             return true;
         }
     </script>
+{% endblock %}
 
-</head>
-<body>
-    <h2>Sign Up</h2>
-    <form name="signupForm" method="post" onsubmit="return validateForm()">
-        {% csrf_token %}
-        <label for="username">User ID:</label>
-        <input type="text" name="username" required><br><br>
-
-        <label for="first_name">Name:</label>
-        <input type="text" name="first_name" required><br><br>
-
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br><br>
-
-        <button type="submit">Sign Up</button>
-    </form>
-
-    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
-</body></html>
+<style>
+    .input-field[type="file"] {
+        border: none;
+        margin-bottom: 15px;
+        background-color: #f9f9f9;
+    }
+</style>
