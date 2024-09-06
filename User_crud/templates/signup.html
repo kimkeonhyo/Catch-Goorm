@@ -1,80 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sign Up</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+{% extends 'base.html' %}
 
-        .signup-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
+{% block title %}Sign Up{% endblock %}
 
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
+{% block content %}
+    <h2>Sign Up</h2>
 
-        p {
-            margin: 0;
-        }
+    <form name="signupForm" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        {% csrf_token %}
+        
+        <label for="username">User ID:</label>
+        <input type="text" name="username" class="input-field" required>
 
-        label {
-            display: block;
-            text-align: left;
-            margin-bottom: 8px;
-            color: #555;
-        }
+        <label for="first_name">Name:</label>
+        <input type="text" name="first_name" class="input-field" required>
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="input-field" required>
 
-        button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-        }
+        <!-- 프로필 이미지 업로드 필드 추가 -->
+        <label for="profile_image">Profile Image:</label>
+        <input type="file" name="profile_image" class="input-field" accept="image/*">
 
-        button:hover {
-            background-color: #0056b3;
-        }
+        <button type="submit" class="btn">Sign Up</button>
+    </form>
 
-        a {
-            margin-top: 15px;
-            display: block;
-            color: #007BFF;
-            text-decoration: none;
-        }
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
     <script>
         function validateForm() {
             const firstName = document.forms["signupForm"]["first_name"].value;
@@ -96,24 +47,12 @@
             return true;
         }
     </script>
-</head>
-<body>
-    <div class="signup-container">
-        <h2>Sign Up</h2>
-        <form name="signupForm" method="post" onsubmit="return validateForm()">
-            {% csrf_token %}
-            <label for="username">User ID:</label>
-            <input type="text" name="username" required>
+{% endblock %}
 
-            <label for="first_name">Name:</label>
-            <input type="text" name="first_name" required>
-
-            <label for="password">Password:</label>
-            <input type="password" name="password" required>
-
-            <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
-    </div>
-</body>
-</html>
+<style>
+    .input-field[type="file"] {
+        border: none;
+        margin-bottom: 15px;
+        background-color: #f9f9f9;
+    }
+</style>
