@@ -1,11 +1,12 @@
 ## Overview
-- fork, pr 연습
+- 해당 작업의 개요
 
 ## Change Log
-- pr 내용 작성
+- 변경된 부분
 
 ## To Reviewer
-- test pr
+- 리뷰어에게 전달할 사항
 
 ## Issue Tags
-- Closed: # 1
+- Closed: # 이슈 티켓 번호를 #으로 명시
+- See also: # 참고 링크
