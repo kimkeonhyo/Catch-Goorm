@@ -15,3 +15,6 @@ static/
 init.sql
 
 media/
+
+# Ignore SQLite database file
+db.sqlite3
