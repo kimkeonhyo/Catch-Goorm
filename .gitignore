@@ -17,4 +17,6 @@ init.sql
 media/
 
 # Ignore SQLite database file
-db.sqlite3
+# db.sqlite3
+
+venv/
