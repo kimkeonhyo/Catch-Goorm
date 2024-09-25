@@ -91,12 +91,11 @@ WSGI_APPLICATION = "User_service.wsgi.application"
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 
 STATIC_URL = "/static/"
@@ -128,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en-us"
 
 # TIME_ZONE = "UTC"
-TIME_ZONE = 'Asia/Seoul' 
+TIME_ZONE = "Asia/Seoul"
 
 
 USE_I18N = True
@@ -149,8 +148,17 @@ LOGIN_URL = "/login/"
 
 
 # media 파일 경로 설정
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Custom User model
-AUTH_USER_MODEL = 'User_crud.User'
+AUTH_USER_MODEL = "User_crud.User"
+
+
+# 추가된 부분
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+]  # Nginx가 사용하는 도메인과 포트 추가
+
