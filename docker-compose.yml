@@ -8,6 +8,8 @@ services:
       - ./db.sqlite3:/app/db.sqlite3  # SQLite 데이터베이스 파일
     expose:
       - "8000"
+    ports:
+    - "8000:8000"  # 외부 포트 8000을 컨테이너의 8000 포트에 연결
     command: >
       bash -c "python3 manage.py makemigrations && 
                python3 manage.py migrate && 
