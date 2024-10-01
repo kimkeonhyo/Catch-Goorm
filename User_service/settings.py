@@ -29,7 +29,8 @@ ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://13.124.234.40:8080",
-    "http://220.69.203.87:8080",  # 요청의 출처를 여기에 추가
+    "http://220.69.203.87:8080",
+    "http://3.34.143.26:8080",  # 요청의 출처를 여기에 추가
 ]
 
 # Application definition
